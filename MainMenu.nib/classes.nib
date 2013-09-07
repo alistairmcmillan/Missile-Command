@@ -1,0 +1,21 @@
+{
+    IBClasses = (
+        {CLASS = FirstResponder; LANGUAGE = ObjC; SUPERCLASS = NSObject; }, 
+        {
+            ACTIONS = {newGame = id; resetHighScore = id; submitScore = id; toggleGamePause = id; }; 
+            CLASS = MissileView; 
+            LANGUAGE = ObjC; 
+            OUTLETS = {
+                highBox = id; 
+                hisBox = id; 
+                levelBox = id; 
+                missileWindow = id; 
+                newGameItem = id; 
+                scoreBox = id; 
+                yourBox = id; 
+            }; 
+            SUPERCLASS = NSView; 
+        }
+    ); 
+    IBVersion = 1; 
+}

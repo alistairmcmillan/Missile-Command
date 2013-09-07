@@ -1,0 +1,270 @@
+{\rtf1\mac\ansicpg10000\cocoartf102
+{\fonttbl\f0\fswiss\fcharset77 Helvetica;\f1\froman\fcharset77 Times-Roman;\f2\froman\fcharset77 Times-Italic;
+\f3\fswiss\fcharset77 Arial-BoldMT;\f4\froman\fcharset77 Times-Bold;\f5\froman\fcharset77 Times-BoldItalic;
+}
+{\colortbl;\red255\green255\blue255;\red0\green0\blue255;}
+\margl1440\margr1440\vieww10140\viewh10580\viewkind0
+\pard\tx1440\tx2880\tx4320\tx5760\tx7200\qc
+
+\f0\fs24 \cf0 \
+\
+
+\f1\fs48 Missile Command\
+
+\fs24 \
+For Cocoa Developers\
+\
+
+\f2\i By Mark Pazolli\
+\pard\tx1440\tx2880\tx4320\tx5760\tx7200\ql\qnatural
+
+\f3\i0\b\fs28 \cf0 \
+Summary
+\f1\b0\fs24 \
+\
+This version of Missile Command aims to present those new to Apple's Cocoa development framework with an example of how to use the framework and Objective-C to implement a simple game. Concepts covered by the game's source code include working with user defaults, Cocoa's graphic classes, drawing strings, enabling and disabling menu items and random number generation. To be consistent with the intended purpose of the game, the code is extensively commented and is released into the public domain meaning there are no legal restrictions placed on what can be done with the code. The game is also kept as simple as possible so as to aid comprehension of it and comes with a code navigation map as well as a set of questions and answers on the source code. For the sake of simplicity, a number of possible optimizations to the game have been omitted.\
+
+\f3\b\fs28 \
+Questions and Answers
+\f2\i\b0\fs24 \
+
+\f1\i0 \
+
+\f4\b Questions on the Source Code
+\f1\b0 \
+\
+\pard\tx1440\tx2880\tx4320\tx5760\tx7200\ql\qnatural
+
+\f5\i\b \cf0 How does the high score work?\
+\pard\tx1440\tx2880\tx4320\tx5760\tx7200\ql\qnatural
+
+\f1\i0\b0 \cf0 \
+The high score is loaded into the "highScore" instance variable using NSUserDefaults in the "awakeFromNib" method and then saved using the same class in the "applicationWillTerminate:" method. During game play it is frequently compared with the player's "score" and updated if necessary by the "updateHighScore" method.\
+\
+\pard\tx1440\tx2880\tx4320\tx5760\tx7200\ql\qnatural
+
+\f5\i\b \cf0 Why not use "[resetItem setEnabled:NO]" and "[resetItem setEnabled:YES]" to disable or enable the "Reset High Scores..." menu item?\
+\pard\tx1440\tx2880\tx4320\tx5760\tx7200\ql\qnatural
+
+\f1\i0\b0 \cf0 \
+Because that usually won't work. Enabling and disabling of a menu item which is connected to an object is usually done by the NSMenuValidation informal protocol which implements the "validateMenuItem:" method.\
+\
+\pard\tx1440\tx2880\tx4320\tx5760\tx7200\ql\qnatural
+
+\f5\i\b \cf0 In "validateMenuItem:" you call "[anItem tag]", does this return the index of the menu item?\
+\pard\tx1440\tx2880\tx4320\tx5760\tx7200\ql\qnatural
+
+\f1\i0\b0 \cf0 \
+No. It returns a special value specified by the programmer in the "MainMenu.nib". To change it simply select the menu item in Interface Builder and then press Command-Shift-I and select "Attributes" from the pop-down menu. At the bottom should be an editable text field with the title "Tag:". You can also change a menu item's tag using the "setTag:" method. The advantages of tags to a menu item index is that tags can be unique between differing menus and changing a menu item's position does not change its tag.\
+\
+\pard\tx1440\tx2880\tx4320\tx5760\tx7200\ql\qnatural
+
+\f5\i\b \cf0 How do you determine when and how frequently "periodicUpdate:" is called?\
+\pard\tx1440\tx2880\tx4320\tx5760\tx7200\ql\qnatural
+
+\f1\i0\b0 \cf0 \
+An "NSTimer" determines when and how frequently the "periodicUpdate:" method is called. In Missile Command, this timer is created in the "newGame:" method by the code "[NSTimer scheduledTimerWithTimeInterval:framePeriod target:self selector:@selector(periodicUpdate:) userInfo:nil repeats:YES]".\
+\
+\pard\tx1440\tx2880\tx4320\tx5760\tx7200\ql\qnatural
+
+\f5\i\b \cf0 What is the purpose of calling "retain"?
+\f1\i0\b0 \
+\
+"Retain" causes an object to be kept until "release" or "autorelease" is called. Otherwise the Cocoa framework may dispose of it  after the event loop finishes. Generally every call to "retain" should be balanced by a single call to "release" or "autorelease". There are more complicated dimensions to this answer that should be considered and I invite you to read the "Memory Management" section of the "Cocoa Developer Documentation" to understand them.\
+\
+
+\f5\i\b What does "random()" return and how does it differ from "rand()"?\
+\pard\tx1440\tx2880\tx4320\tx5760\tx7200\ql\qnatural
+
+\f1\i0\b0 \cf0 \
+"Random()" returns an integer between 0 and 2,147,483,647 (inclusive) and it differs from "rand()" in that it produces 
+\f2\i more
+\f1\i0  random numbers (so to speak). To get a number between 0 and 
+\f2\i x
+\f1\i0  - 1 inclusive we call "random() % 
+\f2\i x
+\f1\i0 " this returns the remainder of random() with respect to x.\
+\
+\pard\tx1440\tx2880\tx4320\tx5760\tx7200\ql\qnatural
+
+\f5\i\b \cf0 How do I request the game screen be update?
+\f1\i0\b0 \
+\
+In this version of Missile Command you would generally call "[self setNeedsDisplay:YES]".\
+\
+
+\f5\i\b Is Missile Command designed for optimal performance? If not where can I find the source code of such a game?\
+\pard\tx1440\tx2880\tx4320\tx5760\tx7200\ql\qnatural
+
+\f1\i0\b0 \cf0 \
+No, not at all and Hooptie is a good example of such a game. Visit \cf2 http://sourceforge.net/projects/inkubator/\cf0 .\
+\
+\pard\tx1440\tx2880\tx4320\tx5760\tx7200\ql\qnatural
+
+\f5\i\b \cf0 "applicationWillTerminate:" is not called before quitting in my application. What's wrong?\
+\
+\pard\tx1440\tx2880\tx4320\tx5760\tx7200\ql\qnatural
+
+\f1\i0\b0 \cf0 It may be that you have forgotten to call "[NSApp setDelegate:self];" in the initialization method of the object which contains the "applicationWillTerminate:" method. Your code may also be exiting your program inappropriately, exiting should either be done by calling "[NSApp terminate:self]" or by the "Quit" menu item in the application menu (usually implemented by Cocoa by default). Finally it may be that you are trying to set multiple delegates for NSApp which is not possible.\
+\
+\pard\tx1440\tx2880\tx4320\tx5760\tx7200\ql\qnatural
+
+\f5\i\b \cf0 I'm trying to set an object that is an "IBOutlet" in my "init..." method but it won't work. How can I fix this?\
+\pard\tx1440\tx2880\tx4320\tx5760\tx7200\ql\qnatural
+
+\f1\i0\b0 \cf0 \
+Try putting the code in an "awakeFromNib" method.\
+\
+\pard\tx1440\tx2880\tx4320\tx5760\tx7200\ql\qnatural
+
+\f5\i\b \cf0 Why is my "mouseDown:", "keyDown:", "mouseMoved:", etc. method not being called?\
+\
+\pard\tx1440\tx2880\tx4320\tx5760\tx7200\ql\qnatural
+
+\f1\i0\b0 \cf0 There could be many reasons. Possibly you have placed the method in a class which does not inherit from NSResponder (NSView, NSWindow, etc. are examples of classes which do inherit from NSResponder). Also certain methods like  "keyDown:" and "mouseMoved:" require additional work to make them functional.\
+\
+\pard\tx1440\tx2880\tx4320\tx5760\tx7200\ql\qnatural
+
+\f5\i\b \cf0 What's up with the co-ordinate system in Cocoa?\
+\pard\tx1440\tx2880\tx4320\tx5760\tx7200\ql\qnatural
+
+\f1\i0\b0 \cf0 \
+As opposed to having the top-left as the origin, Cocoa makes the bottom-left the origin. It takes some getting used to (I'm still not content with the idea).\
+\
+\pard\tx1440\tx2880\tx4320\tx5760\tx7200\ql\qnatural
+
+\f5\i\b \cf0 How can I change the colours?
+\f1\i0\b0 \
+\
+You can start by fiddling around with the "[[NSColor blackColor] set];" and "[[NSColor whiteColor] set];" lines in the "drawRect:" method, but you may then want to move to changing the images "city.tiff" and "title.tiff".\
+\
+
+\f5\i\b What does pow(x, y) do?
+\f1\i0\b0 \
+\
+Return 
+\f2\i x
+\f1\i0  to the power of 
+\f2\i y
+\f1\i0 . You can view a help file on the function by launching Mac OS X's Terminal and typing "man 3 pow" (the '3' is optional in this case). Information on many C functions can be found this way.\
+\
+
+\f5\i\b What does NSString's stringWithFormat: method do?\
+\pard\tx1440\tx2880\tx4320\tx5760\tx7200\ql\qnatural
+
+\f1\i0\b0 \cf0 \
+It returns an NSString (think of it as Cocoa's replacement for a character string) like the given string except with various values substituted into it. For example:\
+\
+[NSString stringWithFormat:@"%d apples", 5] gives @"5 apples"\
+[NSString stringWithFormat:@"%d apples and %d oranges", 5, 6] gives @"5 apples and 6 oranges"\
+[NSString stringWithFormat:@"%f%% change", 0.5] gives @"0.5% change"\
+[NSString stringWithFormat:@"%@ Rulz!", @"Jack"] gives @"Jack Rulz!"\
+[NSString stringWithFormat:@"%s Rulz!", "Jack"] gives @"Jack Rulz!"\
+\
+Notice here that @ precedes a Cocoa-type string.\
+\
+\pard\tx1440\tx2880\tx4320\tx5760\tx7200\ql\qnatural
+
+\f5\i\b \cf0 What about the MVC paradigm?\
+\pard\tx1440\tx2880\tx4320\tx5760\tx7200\ql\qnatural
+
+\f1\i0\b0 \cf0 \
+The MVC paradigm is a useful paradigm that is especially suited to certain types of programs, however it by no means needs to be adopted in every program. In Missile Command, the paradigm was forsaken because it was convenient to do so.\
+\
+
+\f4\b Usage of the Software
+\f1\b0 \
+\
+\pard\tx1440\tx2880\tx4320\tx5760\tx7200\ql\qnatural
+
+\f5\i\b \cf0 Can I use this source code in my programs?\
+Can I modify this source code and distribute my modified version of the game?\
+Can I use this to teach a class on Cocoa?\
+\pard\tx1440\tx2880\tx4320\tx5760\tx7200\ql\qnatural
+
+\f1\i0\b0 \cf0 \
+Yes on all accounts and I encourage you to do so.\
+\
+\pard\tx1440\tx2880\tx4320\tx5760\tx7200\ql\qnatural
+
+\f5\i\b \cf0 Do I have to provide credit to Mark Pazolli?\
+\
+\pard\tx1440\tx2880\tx4320\tx5760\tx7200\ql\qnatural
+
+\f1\i0\b0 \cf0 Not legally, but it would be ethical to do so.\
+\
+\pard\tx1440\tx2880\tx4320\tx5760\tx7200\ql\qnatural
+
+\f5\i\b \cf0 Do I have to distribute the modified or original source code with my changes?
+\f1\i0\b0 \
+\
+No, but please consider doing so.\
+\
+\pard\tx1440\tx2880\tx4320\tx5760\tx7200\ql\qnatural
+
+\f4\b \cf0 On Making Games\
+
+\f1\b0 \
+\pard\tx1440\tx2880\tx4320\tx5760\tx7200\ql\qnatural
+
+\f5\i\b \cf0 After this tutorial what should I do next?\
+Is Cocoa the best environment for making games?\
+What are Cocoa's strengths?
+\f1\i0\b0 \
+\
+These are difficult questions. Cocoa is targeted towards application development and as such is not used exclusively by most modern games for various reasons including performance. Instead OpenGL is used by most modern games including Ambrosia Shareware's Deimos Rising, id Software's Quake III and Blizzard's WarCraft III. OpenGL handles both 3D and 2D graphics and often is one of the best ways to take full advantage of the graphics cards that appear in various Macintosh computers. You can learn more about OpenGL from the Apple website at:\
+\
+\pard\tx1440\tx2880\tx4320\tx5760\tx7200\ql\qnatural
+\cf2 http://developer.apple.com/opengl/\
+\pard\tx1440\tx2880\tx4320\tx5760\tx7200\ql\qnatural
+\cf0 \
+SDL is also a 2D gaming API that can be easier to learn than OpenGL. It was behind the Linux programs Maelstrom and Frozen Bubble. You can learn more about SDL from the SDL website at:\
+\
+\pard\tx1440\tx2880\tx4320\tx5760\tx7200\ql\qnatural
+\cf2 http://www.libsdl.org/\
+\pard\tx1440\tx2880\tx4320\tx5760\tx7200\ql\qnatural
+\cf0 \
+Both OpenGL and SDL are well established on other computing platforms such as Linux and Windows and can be mixed with Cocoa code.\
+\
+If you are not looking to develop an action or arcade game, but instead something like a card or puzzle game, Cocoa should be more than adequate for your needs. Cocoa is also ideal for developing general-purpose applications for the Macintosh.\
+\
+
+\f4\b Feedback and Other
+\f1\b0 \
+\
+\pard\tx1440\tx2880\tx4320\tx5760\tx7200\ql\qnatural
+
+\f5\i\b \cf0 Can I obtain the Code Navigation Map in PowerPoint form for editing?\
+\pard\tx1440\tx2880\tx4320\tx5760\tx7200\ql\qnatural
+
+\f1\i0\b0 \cf0 \
+Yes, it can be downloaded from \cf2 http://vitality.sourceforge.net/map.ppt\cf0 .\
+\
+\pard\tx1440\tx2880\tx4320\tx5760\tx7200\ql\qnatural
+
+\f5\i\b \cf0 Where should I send feedback, questions and bug reports?\
+\pard\tx1440\tx2880\tx4320\tx5760\tx7200\ql\qnatural
+
+\f1\i0\b0 \cf0 \
+Please e-mail all of the above to \cf2 quirinus@bigpond.com\cf0 . Positive feedback is especially welcome.\
+\
+\pard\tx1440\tx2880\tx4320\tx5760\tx7200\ql\qnatural
+
+\f5\i\b \cf0 Is there a reason cities reappear after some levels?\
+\pard\tx1440\tx2880\tx4320\tx5760\tx7200\ql\qnatural
+
+\f1\i0\b0 \cf0 \
+This is because every four levels the player is awarded an extra city. If the player still has a full set of cities these cities are kept in safe-keeping and reappear after the player experiences his first loss.\
+\
+\pard\tx1440\tx2880\tx4320\tx5760\tx7200\ql\qnatural
+
+\f5\i\b \cf0 What is the origin of Missile Command?
+\f1\i0\b0 \
+\
+The game was originally released by Atari in 1980 as a console video game. In 1984, it was released for the Macintosh by Robert Munafo and updated in 1995 by Ingemar Ragnemalm. This version of Missile Command, released in 2002 by Mark Pazolli, possesses almost identical graphics to the original Macintosh version and similar game-play although some elements have been removed to simplify the code.\
+\
+\pard\tx1440\tx2880\tx4320\tx5760\tx7200\qc
+
+\fs20 \cf0 \
+Mark Pazolli\
+Public Domain Documentation 2004}
