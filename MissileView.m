@@ -25,11 +25,11 @@
 	int i;
 	
 	// Call the super's initializer
-	[super initWithFrame:frame];
+	self = [super initWithFrame:frame];
 	
 	// Randomize the random number generator
-	srandom(time(nil));
-	
+	srandom((uint)time(nil));
+
 	// Set game state to display the splash screen
 	gameState = kSplashScreen;
 	
@@ -65,7 +65,7 @@
 	highScore = [[NSUserDefaults standardUserDefaults] integerForKey:@"highScore"];
 	
 	// Display the high score in its text box
-	[highBox setStringValue:[NSString stringWithFormat:@"High Score: %d", highScore]];
+	[highBox setStringValue:[NSString stringWithFormat:@"High Score: %ld", highScore]];
 }
 
 /*
@@ -124,8 +124,8 @@
 			turtle = [NSImage imageNamed:@"title.tiff"];
 			turtlePoint.x = ([self bounds].origin.x + ([self bounds].size.width / 2)) - ([turtle size].width / 2);
 			turtlePoint.y = ([self bounds].origin.y + ([self bounds].size.height / 2)) - ([turtle size].height / 2);
-			[turtle compositeToPoint:turtlePoint operation:NSCompositeSourceOver];
-	
+			[turtle drawAtPoint:turtlePoint fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:1.0];
+
 		break;
 		case kGamePlay:
 			
@@ -133,7 +133,7 @@
 			for (i = 0; i < 6; i++) {
 				if (hasCity[i] == YES) {
 					turtle = [NSImage imageNamed:@"city.tiff"];
-					[turtle compositeToPoint:cityRect[i].origin operation:NSCompositeSourceOver];
+					[turtle drawAtPoint:cityRect[i].origin fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:1.0];
 				}
 			}
 			
@@ -164,7 +164,10 @@
 			// Draw the "Level XX" string - centered
 			displayString = [NSString stringWithFormat:@"Level %d",level];
 			displayFont = [NSFont fontWithName:@"Chicago" size:24];
-			displayAttributes = [NSDictionary dictionaryWithObject:displayFont forKey:NSFontAttributeName];
+            if(displayFont == nil) {
+                displayFont = [NSFont systemFontOfSize:24];
+            }
+            displayAttributes = [NSDictionary dictionaryWithObject:displayFont forKey:NSFontAttributeName];
 			turtleSize = [displayString sizeWithAttributes:displayAttributes];
 			turtlePoint.x = ([self bounds].size.width / 2) - (turtleSize.width / 2);
 			turtlePoint.y = ([self bounds].size.height / 2) - (turtleSize.height / 2) + 12;
@@ -174,7 +177,7 @@
 			for (i = 0; i < 6; i++) {
 				if (hasCity[i] == YES) {
 					turtle = [NSImage imageNamed:@"city.tiff"];
-					[turtle compositeToPoint:cityRect[i].origin operation:NSCompositeSourceOver];
+					[turtle drawAtPoint:cityRect[i].origin fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:1.0];
 				}
 			}
 			
@@ -184,7 +187,10 @@
 			// Draw the "Paused" string centred
 			displayString = @"Paused";
 			displayFont = [NSFont fontWithName:@"Chicago" size:24];
-			displayAttributes = [NSDictionary dictionaryWithObject:displayFont forKey:NSFontAttributeName];
+            if(displayFont == nil) {
+                displayFont = [NSFont systemFontOfSize:24];
+            }
+            displayAttributes = [NSDictionary dictionaryWithObject:displayFont forKey:NSFontAttributeName];
 			turtleSize = [displayString sizeWithAttributes:displayAttributes];
 			turtlePoint.x = ([self bounds].size.width / 2) - (turtleSize.width / 2);
 			turtlePoint.y = ([self bounds].size.height / 2) - (turtleSize.height / 2);
@@ -238,7 +244,7 @@
 			
 			// Reflect the current settings in the game window
 			[levelBox setStringValue:[NSString stringWithFormat:@"Level: %d", level]];
-			[scoreBox setStringValue:[NSString stringWithFormat:@"Score: %d", score]];
+			[scoreBox setStringValue:[NSString stringWithFormat:@"Score: %ld", (long)score]];
 			[yourBox setStringValue:[NSString stringWithFormat:@"Yours Left: %d", playerMissiles]];
 			[hisBox setStringValue:[NSString stringWithFormat:@"His Left: %d", computerMissiles]];
 			
@@ -246,7 +252,7 @@
 			displayCount = -1;
 			
 			// Initiate the periodic timer for game play
-			missileTimer =  [[NSTimer scheduledTimerWithTimeInterval:framePeriod target:self selector:@selector(periodicUpdate:) userInfo:nil repeats:YES] retain];
+			missileTimer =  [NSTimer scheduledTimerWithTimeInterval:framePeriod target:self selector:@selector(periodicUpdate:) userInfo:nil repeats:YES];
 				
 		break;
 		case kGamePaused:
@@ -258,7 +264,6 @@
 			
 			// Free our periodic timer
 			[missileTimer invalidate];
-			[missileTimer release];
 			missileTimer = nil;
 			
 			// Return to the splash screen state
@@ -288,7 +293,6 @@
 			
 			// Free our periodic timer
 			[missileTimer invalidate];
-			[missileTimer release];
 			missileTimer = nil;
 			
 			// Get the game state to resume to and then switch to the paused state
@@ -305,7 +309,7 @@
 			gameState = resumeGameState;
 			
 			// Reinstate our periodic timer
-			missileTimer =  [[NSTimer scheduledTimerWithTimeInterval:framePeriod target:self selector:@selector(periodicUpdate:) userInfo:nil repeats:YES] retain];
+			missileTimer =  [NSTimer scheduledTimerWithTimeInterval:framePeriod target:self selector:@selector(periodicUpdate:) userInfo:nil repeats:YES];
 		
 		break;
 	}
@@ -327,8 +331,8 @@
 	score = 0;
 	
 	// Reflect these changes in the appropriate text boxes
-	[highBox setStringValue:[NSString stringWithFormat:@"High Score: %d", highScore]];
-	[scoreBox setStringValue:[NSString stringWithFormat:@"Score: %d", score]];
+	[highBox setStringValue:[NSString stringWithFormat:@"High Score: %ld", highScore]];
+	[scoreBox setStringValue:[NSString stringWithFormat:@"Score: %ld", (long)score]];
 }
 
 /*
@@ -533,7 +537,7 @@
 	
 	// Apply city bonus and reflect this in the associated text box (then call for the high scores to be kept in sync)
 	score += currentCities * 50;
-	[scoreBox setStringValue:[NSString stringWithFormat:@"Score: %d", score]];
+	[scoreBox setStringValue:[NSString stringWithFormat:@"Score: %ld", (long)score]];
 	[self updateHighScore];
 	
 	// Restore cities if necessary
@@ -694,7 +698,7 @@
 						
 						// Increment the score by twenty and reflect changes in associated text boxes
 						score += 20;
-						[scoreBox setStringValue:[NSString stringWithFormat:@"Score: %d", score]];
+						[scoreBox setStringValue:[NSString stringWithFormat:@"Score: %ld", (long)score]];
 						[self updateHighScore];
 						
 						// Cause the missile to spawn another detonation
@@ -756,7 +760,7 @@
 		highScore = score;
 		
 		// Update the high score text box
-		[highBox setStringValue:[NSString stringWithFormat:@"High Score: %d", highScore]];
+		[highBox setStringValue:[NSString stringWithFormat:@"High Score: %ld", highScore]];
 	
 	}
 }
@@ -771,7 +775,7 @@
 */
 - (BOOL)validateMenuItem:(NSMenuItem *)anItem
 {
-	int itemTag = [anItem tag];
+	long itemTag = [anItem tag];
 	
 	// If the mode is not the splash screen and the menu item is the "Reset High Score" one return NO
 	if (gameState != kSplashScreen && itemTag == 3)

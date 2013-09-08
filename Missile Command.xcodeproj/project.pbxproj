@@ -1,0 +1,287 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		F38EA6DF17DBA2680006C554 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F38EA6DE17DBA2680006C554 /* Cocoa.framework */; };
+		F38EA6EB17DBA2680006C554 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F38EA6EA17DBA2680006C554 /* main.m */; };
+		F38EA6FE17DBA3B70006C554 /* MainMenu.nib in Resources */ = {isa = PBXBuildFile; fileRef = F38EA6FB17DBA3B70006C554 /* MainMenu.nib */; };
+		F38EA6FF17DBA3B70006C554 /* MissileView.m in Sources */ = {isa = PBXBuildFile; fileRef = F38EA6FD17DBA3B70006C554 /* MissileView.m */; };
+		F38EA70517DBA9860006C554 /* city.tiff in Resources */ = {isa = PBXBuildFile; fileRef = F38EA70017DBA9850006C554 /* city.tiff */; };
+		F38EA70917DBA9860006C554 /* title.tiff in Resources */ = {isa = PBXBuildFile; fileRef = F38EA70417DBA9860006C554 /* title.tiff */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		F38EA6DB17DBA2680006C554 /* Missile Command.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Missile Command.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F38EA6DE17DBA2680006C554 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		F38EA6E117DBA2680006C554 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		F38EA6E217DBA2680006C554 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		F38EA6E317DBA2680006C554 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		F38EA6E617DBA2680006C554 /* Missile Command-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Missile Command-Info.plist"; path = "../Missile Command-Info.plist"; sourceTree = "<group>"; };
+		F38EA6EA17DBA2680006C554 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = main.m; path = ../main.m; sourceTree = "<group>"; };
+		F38EA6FB17DBA3B70006C554 /* MainMenu.nib */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = MainMenu.nib; path = ../MainMenu.nib; sourceTree = "<group>"; };
+		F38EA6FC17DBA3B70006C554 /* MissileView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MissileView.h; path = ../MissileView.h; sourceTree = "<group>"; };
+		F38EA6FD17DBA3B70006C554 /* MissileView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MissileView.m; path = ../MissileView.m; sourceTree = "<group>"; };
+		F38EA70017DBA9850006C554 /* city.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = city.tiff; path = ../city.tiff; sourceTree = "<group>"; };
+		F38EA70117DBA9850006C554 /* Code Navigation Map.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; name = "Code Navigation Map.pdf"; path = "../Code Navigation Map.pdf"; sourceTree = "<group>"; };
+		F38EA70217DBA9860006C554 /* License.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; name = License.rtf; path = ../License.rtf; sourceTree = "<group>"; };
+		F38EA70317DBA9860006C554 /* Read Me.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; name = "Read Me.rtf"; path = "../Read Me.rtf"; sourceTree = "<group>"; };
+		F38EA70417DBA9860006C554 /* title.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = title.tiff; path = ../title.tiff; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		F38EA6D817DBA2680006C554 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F38EA6DF17DBA2680006C554 /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		F38EA6D217DBA2680006C554 = {
+			isa = PBXGroup;
+			children = (
+				F38EA6E417DBA2680006C554 /* Missile Command */,
+				F38EA6DD17DBA2680006C554 /* Frameworks */,
+				F38EA6DC17DBA2680006C554 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		F38EA6DC17DBA2680006C554 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F38EA6DB17DBA2680006C554 /* Missile Command.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F38EA6DD17DBA2680006C554 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F38EA6DE17DBA2680006C554 /* Cocoa.framework */,
+				F38EA6E017DBA2680006C554 /* Other Frameworks */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F38EA6E017DBA2680006C554 /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F38EA6E117DBA2680006C554 /* AppKit.framework */,
+				F38EA6E217DBA2680006C554 /* CoreData.framework */,
+				F38EA6E317DBA2680006C554 /* Foundation.framework */,
+			);
+			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+		F38EA6E417DBA2680006C554 /* Missile Command */ = {
+			isa = PBXGroup;
+			children = (
+				F38EA6FB17DBA3B70006C554 /* MainMenu.nib */,
+				F38EA6FC17DBA3B70006C554 /* MissileView.h */,
+				F38EA6FD17DBA3B70006C554 /* MissileView.m */,
+				F38EA6E517DBA2680006C554 /* Supporting Files */,
+			);
+			path = "Missile Command";
+			sourceTree = "<group>";
+		};
+		F38EA6E517DBA2680006C554 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				F38EA70017DBA9850006C554 /* city.tiff */,
+				F38EA70117DBA9850006C554 /* Code Navigation Map.pdf */,
+				F38EA70217DBA9860006C554 /* License.rtf */,
+				F38EA70317DBA9860006C554 /* Read Me.rtf */,
+				F38EA70417DBA9860006C554 /* title.tiff */,
+				F38EA6E617DBA2680006C554 /* Missile Command-Info.plist */,
+				F38EA6EA17DBA2680006C554 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		F38EA6DA17DBA2680006C554 /* Missile Command */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F38EA6F817DBA2690006C554 /* Build configuration list for PBXNativeTarget "Missile Command" */;
+			buildPhases = (
+				F38EA6D717DBA2680006C554 /* Sources */,
+				F38EA6D817DBA2680006C554 /* Frameworks */,
+				F38EA6D917DBA2680006C554 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Missile Command";
+			productName = "Missile Command";
+			productReference = F38EA6DB17DBA2680006C554 /* Missile Command.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		F38EA6D317DBA2680006C554 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = AM;
+				LastUpgradeCheck = 0460;
+				ORGANIZATIONNAME = "Alistair McMillan";
+			};
+			buildConfigurationList = F38EA6D617DBA2680006C554 /* Build configuration list for PBXProject "Missile Command" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = F38EA6D217DBA2680006C554;
+			productRefGroup = F38EA6DC17DBA2680006C554 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				F38EA6DA17DBA2680006C554 /* Missile Command */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		F38EA6D917DBA2680006C554 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F38EA6FE17DBA3B70006C554 /* MainMenu.nib in Resources */,
+				F38EA70517DBA9860006C554 /* city.tiff in Resources */,
+				F38EA70917DBA9860006C554 /* title.tiff in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		F38EA6D717DBA2680006C554 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F38EA6EB17DBA2680006C554 /* main.m in Sources */,
+				F38EA6FF17DBA3B70006C554 /* MissileView.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		F38EA6F617DBA2690006C554 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		F38EA6F717DBA2690006C554 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		F38EA6F917DBA2690006C554 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				INFOPLIST_FILE = "$(SRCROOT)/Missile Command-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		F38EA6FA17DBA2690006C554 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				INFOPLIST_FILE = "$(SRCROOT)/Missile Command-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		F38EA6D617DBA2680006C554 /* Build configuration list for PBXProject "Missile Command" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F38EA6F617DBA2690006C554 /* Debug */,
+				F38EA6F717DBA2690006C554 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F38EA6F817DBA2690006C554 /* Build configuration list for PBXNativeTarget "Missile Command" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F38EA6F917DBA2690006C554 /* Debug */,
+				F38EA6FA17DBA2690006C554 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = F38EA6D317DBA2680006C554 /* Project object */;
+}

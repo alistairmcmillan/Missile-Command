@@ -110,10 +110,10 @@ typedef struct {
 	MissileStruct missile[maxBombs];
 	
 	// Current player's score
-	int score;
+	long score;
 	
 	// Current high score
-	int highScore;
+	long highScore;
 	
 	// How many loops have passed without a launch
 	int loopsWithoutLaunch;
