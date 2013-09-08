@@ -21,16 +21,16 @@
 		F38EA6E117DBA2680006C554 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		F38EA6E217DBA2680006C554 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		F38EA6E317DBA2680006C554 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		F38EA6E617DBA2680006C554 /* Missile Command-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Missile Command-Info.plist"; path = "../Missile Command-Info.plist"; sourceTree = "<group>"; };
-		F38EA6EA17DBA2680006C554 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = main.m; path = ../main.m; sourceTree = "<group>"; };
-		F38EA6FB17DBA3B70006C554 /* MainMenu.nib */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = MainMenu.nib; path = ../MainMenu.nib; sourceTree = "<group>"; };
-		F38EA6FC17DBA3B70006C554 /* MissileView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MissileView.h; path = ../MissileView.h; sourceTree = "<group>"; };
-		F38EA6FD17DBA3B70006C554 /* MissileView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MissileView.m; path = ../MissileView.m; sourceTree = "<group>"; };
-		F38EA70017DBA9850006C554 /* city.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = city.tiff; path = ../city.tiff; sourceTree = "<group>"; };
+		F38EA6E617DBA2680006C554 /* Missile Command-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Missile Command-Info.plist"; sourceTree = "<group>"; };
+		F38EA6EA17DBA2680006C554 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		F38EA6FB17DBA3B70006C554 /* MainMenu.nib */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; path = MainMenu.nib; sourceTree = "<group>"; };
+		F38EA6FC17DBA3B70006C554 /* MissileView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MissileView.h; sourceTree = "<group>"; };
+		F38EA6FD17DBA3B70006C554 /* MissileView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MissileView.m; sourceTree = "<group>"; };
+		F38EA70017DBA9850006C554 /* city.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = city.tiff; sourceTree = "<group>"; };
 		F38EA70117DBA9850006C554 /* Code Navigation Map.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; name = "Code Navigation Map.pdf"; path = "../Code Navigation Map.pdf"; sourceTree = "<group>"; };
 		F38EA70217DBA9860006C554 /* License.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; name = License.rtf; path = ../License.rtf; sourceTree = "<group>"; };
 		F38EA70317DBA9860006C554 /* Read Me.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; name = "Read Me.rtf"; path = "../Read Me.rtf"; sourceTree = "<group>"; };
-		F38EA70417DBA9860006C554 /* title.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = title.tiff; path = ../title.tiff; sourceTree = "<group>"; };
+		F38EA70417DBA9860006C554 /* title.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = title.tiff; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -243,7 +243,7 @@
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				INFOPLIST_FILE = "$(SRCROOT)/Missile Command-Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Missile Command/Missile Command-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -254,7 +254,7 @@
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				INFOPLIST_FILE = "$(SRCROOT)/Missile Command-Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Missile Command/Missile Command-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
